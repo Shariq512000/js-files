@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form onsubmit="check(); return false">
+        enter temperature:
+        <input required type="number" id="inputNum1">
+        <br>
+        <button type="submit">Check</button>
+    </form>
+    <h1 id="result"></h1>
+
+    <script>
+        function check(){
+            let inputNum1 = document.querySelector("#inputNum1").value;
+            console.log("inputNum1:" , inputNum1);
+            let inputNum = Number(inputNum1);
+            let result = "";
+            if(inputNum < 10){
+                result = "OMG! Today’s weather is so Cool."
+            }
+            if(inputNum > 10) {
+                result = "OMG! Today’s weather is so Cool."
+            }
+            if(inputNum > 20) {
+                result = "Today’s Weather is cool."
+            }
+            if(inputNum > 30){
+                result = "The Weather today is Normal."
+            }
+            if(inputNum > 40){
+               result = "It is too hot outside."
+            }
+            
+            
+            
+            document.querySelector("#result").innerText = `${result}`
+
+        }
+    </script>
+
+</body>
+</html>

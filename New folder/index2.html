@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="inputNum1">Enter your fuel quantity:</label>
+    <input type="number" min="0" id="inputNum1">
+    <br>
+    <button onclick="submit()" type="submit"> check </button>
+
+    <h1 id="result"></h1>
+    <script>
+        function submit(){
+            let inputNum1 = document.querySelector("#inputNum1").value
+            console.log('inputNum1' , inputNum1);
+            let result = "";
+            let yourfuel = Number(inputNum1);
+            if(yourfuel <= 0.25){
+                result = "Please refill the fuel in your car";
+            }
+            else {
+                result = "Dont need of refill";
+            }
+            document.querySelector("#result").innerText = result
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form onsubmit="checkGrade(); return false">
+        Total Marks of Physic:
+        <input required type="number" min="1" placeholder="100" id="inputNum1">
+        <br>
+        Obtained Marks of Physic:
+        <input required type="number" min="0" placeholder="85" id="inputNum2">
+        <br>
+        Total Marks of Chemistry:
+        <input type="number" required min="1" placeholder="100" id="inputNum3">
+        <br>
+        Obtained Marks of Chemistry:
+        <input type="number" required min="0" placeholder="85" id="inputNum4">
+        <br>
+        Total Marks of Math:
+        <input required type="number" min="1" placeholder="100" id="inputNum5">
+        <br>
+        Obtained Marks of Math:
+        <input type="number" required min="0" placeholder="85" id="inputNum6">
+
+        <br>
+        <button type="submit">Check</button>
+    </form>
+
+    <h1 id="tm"></h1>
+    <h1 id="om"></h1>
+    <h1 id="pt"></h1>
+    <h1 id="gr"></h1>
+    <h1 id="rm"></h1>
+    <p id="validationText" style="color: rgb(182, 0, 0)"></p>
+
+
+    <p>
+        Grade Distribution:
+    <ul>
+        <li> passing mark is 60% </li>
+        <li> 60% - 69%: Grade B </li>
+        <li> 70% - 79%: Grade A</li>
+        <li> 80% - 100%: Grade A1 </li>
+    </ul>
+
+    </p>
+
+    <script>
+
+        function checkGrade() {
+
+            let totalMarks1 = document.querySelector('#inputNum1').value;
+            console.log("totalMarks1", totalMarks1);
+
+            let totalMarks2 = document.querySelector('#inputNum3').value;
+            console.log("totalMarks2", totalMarks2);
+
+            let totalMarks3 = document.querySelector('#inputNum5').value;
+            console.log("totalMarks3", totalMarks3);
+
+            let obtainedMarks1 = document.querySelector('#inputNum2').value;
+            console.log("obtainedMarks1", obtainedMarks1);
+
+            let obtainedMarks2 = document.querySelector('#inputNum4').value;
+            console.log("obtainedMarks2", obtainedMarks2);
+
+            let obtainedMarks3 = document.querySelector('#inputNum6').value;
+            console.log("obtainedMarks3", obtainedMarks3);
+
+            let totalMarks = Number(totalMarks1) + Number(totalMarks2) + Number(totalMarks3)
+            console.log("totalMarks" , totalMarks);
+            let obtainedMarks = Number(obtainedMarks1) + Number(obtainedMarks2) + Number(obtainedMarks3)
+            console.log("obtainedMarks" , obtainedMarks);
+
+            let text = "";
+            let result = "";
+
+            if (isNaN(totalMarks)) {
+                text = "Please enter a valid Total Marks";
+            }
+            if (isNaN(obtainedMarks)) {
+                text = "Please enter a valid Obtained Marks";
+            }
+
+            if (totalMarks < 1) {
+                text = "Please enter a positive value for Total Marks";
+            }
+            if (obtainedMarks < 0) {
+                text = "Please enter a positive value for Obtained Marks";
+            }
+
+            if (totalMarks < obtainedMarks) {
+                text = "Obtained Marks cannot be greater than Total Marks";
+            }
+
+            if (text) {
+                document.querySelector('#validationText').innerText = text;
+                return;
+            } else {
+                document.querySelector('#validationText').innerText = ""
+            }
+
+            let percent = (obtainedMarks / totalMarks) * 100;
+            console.log("percent: ", percent);
+
+
+            if (percent < 60) {
+                result = "Fail"
+
+            } else if (percent > 59 && percent < 70) {
+                result = "Grade B"
+
+            } else if (percent > 69 && percent < 80) {
+                result = "Grade A"
+
+            } else {
+                result = "Grade A1"
+            }
+
+            let remarks = "";
+
+            if (percent < 60) {
+                remarks = "Sorry"
+
+            } else if (percent > 59 && percent < 70) {
+                remarks = "You Need to improve"
+
+            } else if (percent > 69 && percent < 80) {
+                remarks = "Good"
+
+            } else {
+                remarks = "Excellent"
+            }
+
+
+            // document.querySelector('#result').innerText =  percent + "% - " + result;
+            document.querySelector('#pt').innerText = `Percentage: ${percent}%`;
+            document.querySelector('#tm').innerText = `Total Marks: ${totalMarks}`;
+            document.querySelector('#om').innerText = `Obtained Marks: ${obtainedMarks}`;
+            document.querySelector('#gr').innerText = `Grade: ${result}`;
+            document.querySelector('#rm').innerText = `Remarks: ${remarks}`;
+
+
+
+
+        }
+
+
+
+    </script>
+
+</body>
+</html>

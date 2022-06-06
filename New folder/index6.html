@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form onsubmit="check(); return false" >
+        <label for="number">
+            enter number
+        </label>
+        <input type="number" id="inputNum1">
+        <br>
+        <label for="number">
+            enter number
+        </label>
+        <input type="number" id="inputNum2">
+        <br>
+        select opperator:
+       <select name="op" id="op">
+           <option value="division" id="divi">/</option>
+           <option value="addition" id="addi">+</option>
+           <option value="subtraction" id="subt">-</option>
+           <option value="multiplication" id="mul">x</option>
+
+       </select>
+       <br>
+       <button type="submit">submit</button>
+    </form>
+    <h1 id="result"></h1>
+    <script>
+        function check() {
+
+
+              let inputNum1 = document.querySelector('#inputNum1').value
+               console.log('inputNum1' , inputNum1);
+              let inputNum2 = document.querySelector('#inputNum2').value
+               console.log('inputNum2' , inputNum2);
+               let firstinput = Number(inputNum1)
+               let secondinput = Number(inputNum2)
+
+              let opperator = document.querySelector("#op").value
+              console.log('opperator' , opperator);
+              let divi = (firstinput) / (secondinput);
+              let add = (firstinput) + (secondinput);
+              let sub = (firstinput) - (secondinput);
+              let mul = (firstinput) * (secondinput);
+              let fnf = "";
+              let result = "";
+              if(opperator === "division"){
+                  fnf = divi
+              }
+              if(opperator === "addition"){
+                  fnf = add
+              }
+              if(opperator === "subtraction"){
+                  fnf = sub
+              }
+              if(opperator === "multiplication"){
+                  fnf = mul
+              }
+              document.querySelector('#result').innerText = `${firstinput} ${opperator} ${secondinput} is ${fnf}`
+              
+        }
+    </script>
+</body>
+</html>

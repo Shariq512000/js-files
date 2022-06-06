@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form onsubmit="check(); return false" >
+        <!-- <label for="number"> -->
+            <!-- enter number -->
+        <!-- </label> -->
+        <!-- <input type="number" id="inputNum1"> -->
+        select your city name:
+       <select name="city" id="city">
+           <option value="Karachi" id="kk">Karachi</option>
+           <option value="Lahore" id="ll">Lahore</option>
+           <option value="Islamabad" id="bb">Islamabad</option>
+       </select>
+       <br>
+        Enter your gender:
+       <input type="radio" id="rd1" name="gender" value="Male" checked="checked">Male
+       <input type="radio" id="rd2" name="gender" value="Female">Female
+       <br>
+       select the signal colour:
+       <select name="traffic" id="traffic">
+           <option value="Red" id="rr">Red</option>
+           <option value="Yellow" id="yy">Yellow</option>
+           <option value="Green" id="gg">Green</option>
+       </select>
+       <br>
+       <button type="submit">submit</button>
+    </form>
+    <h1 id="city1"></h1>
+    <h1 id="gender1"></h1>
+    <h1 id="traffic1"></h1>
+    <script>
+        function check() {
+
+              let rd1 = document.querySelector("#rd1").value
+              console.log('rd1' , rd1);
+              let rd2 = document.querySelector("#rd2").value
+              console.log('rd2' , rd2);
+
+            
+
+              let city = document.querySelector("#city").value
+              console.log('city' , city);
+
+              let traffic = document.querySelector("#traffic").value
+              console.log('traffic' , traffic);
+              let Karachi = document.querySelector("#kk").value
+              let Lahore = document.querySelector("#ll").value
+              let Islamabad = document.querySelector("#bb").value
+              let Red = document.querySelector("#rr").value
+              let Yellow = document.querySelector("#yy").value
+              let Green = document.querySelector("#gg").value
+
+
+              let text1 = "";
+              let text2 = "";
+              let text3 = "";
+              
+              if(city === Karachi){
+                text1 = "Welcome to city of Light";
+              }
+              if (city === Lahore){
+                  text1 = "Welcome to Heart of Pakistan";
+              }
+              if (city === Islamabad){
+                  text1 = "Welcome to Capital of Pakistan";
+              }
+              if(rd1.checked===true){
+                  text2 = "Good Morning Sir";
+              }
+              else {
+                  text2 = "Good Morning Ma'am";
+              }
+              if(traffic === Red){
+                  text3 = "Must Stop";
+              }
+              if(traffic === Yellow){
+                  text3 = "Ready to Move";
+              }
+              if(traffic === Green){
+                  text3 = "Move Now"
+              }
+              document.querySelector("#city1").innerText = text1
+              document.querySelector("#gender1").innerText = text2
+              document.querySelector("#traffic1").innerText = text3
+
+        }
+    </script>
+</body>
+</html>
